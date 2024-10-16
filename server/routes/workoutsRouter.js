@@ -1,29 +1,22 @@
 import { Router } from "express"
-import { createWorkout } from "../controllers/workoutController.js"
+import { createWorkout, getWorkouts, getWorkout } from "../controllers/workoutController.js"
 const router = Router()
 
-router.get('/', (req, res) => {
-    res.json({message: "workouts"})
-    }
-)
+//Get all workouts
+router.get('/', getWorkouts)
 
-router.get('/:id', (req, res) => {
-    res.json({message: `workout id : ${req.params.id}`,})
-    }
-)
+//Get singular Workout
+router.get('/:id', getWorkout)
 
-router.get('/', (req, res) => {
-    res.json({message: "get api"})
-    }
-)
-
+//Create Workouts
 router.post('/', createWorkout)
 
+//Delete Workouts
 router.delete('/:id', (req, res) => {
     res.json({message: `delete workout id : ${req.params.id}`})
     }
 )
-
+//Update Workouts
 router.patch('/:id', (req, res) => {
     res.json({message: `update workout id : ${req.params.id}`})
     }
