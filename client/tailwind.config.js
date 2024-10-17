@@ -7,6 +7,15 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-outline-black': {
+          textShadow: '0.25px 0.25px 0 black, -0.25px -0.25px 0 black, -0.25px 0.25px 0 black, 0.25px -0.25px 0 black',
+        }
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+  ],
 }
 
