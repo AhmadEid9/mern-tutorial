@@ -51,7 +51,7 @@ const WorkoutDetails = ({workout, onDelete, setWorkouts, onUpdate }) => {
         workout={workout}
         showErrorNotification={toast.error}
         showUpdateNotification={toast.done}
-        updateWorkoutHandle={onUpdate}
+        onUpdate={onUpdate}
         />
         <ToastContainer />
         </div>

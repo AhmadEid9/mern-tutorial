@@ -33,12 +33,7 @@ const Home = () => {
       
       }
       const updateWorkoutInList = (updatedWorkout) => {
-        setWorkouts(workouts.map((workout) =>{
-            if (workout._id === updatedWorkout._id) {
-                workout = updatedWorkout
-            }
-        }
-        ));
+        setWorkouts((prevWorkouts) => prevWorkouts.map((workout) => workout._id === updatedWorkout._id ? updatedWorkout : workout));
       }
   return (
     <div className='bg-gray-400 w-screens min-h-screen flex justify-center gap-3 rounded-x'>

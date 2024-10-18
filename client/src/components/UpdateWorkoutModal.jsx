@@ -17,6 +17,7 @@ const UpdateWorkoutModal = ({ isVisible, handleOk, handleCancel, workout, onUpda
             reps: parseFloat(reps),
             load: parseFloat(load)
         }
+        console.log(workoutData);
         try {
             const res = await axios.patch(`http://127.0.0.1:4000/api/workouts/${workout._id}`, workoutData)
             console.log("ServerResponse", res.data)
