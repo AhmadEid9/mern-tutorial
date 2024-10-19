@@ -58,7 +58,7 @@ const UpdateWorkoutModal = ({ isVisible, handleOk, handleCancel, workout, onUpda
               value={title}
               className="border border-gray-300 rounded-md p-2 w-2/3"
               placeholder="Rep's Title"
-              onChange={(e) => {setTitle(e.target.value); console.log(e.target.value)}}
+              onChange={(e) => setTitle(e.target.value)}
               required
             />
           </div>
@@ -70,7 +70,7 @@ const UpdateWorkoutModal = ({ isVisible, handleOk, handleCancel, workout, onUpda
               value={reps}
               className="border border-gray-300 rounded-md p-2 w-2/3"
               placeholder="Number of Reps"
-              onChange={(e) => {setReps(e.target.value); console.log(e.target.value)}}
+              onChange={(e) => setReps(e.target.value)}
               required
             />
           </div>
