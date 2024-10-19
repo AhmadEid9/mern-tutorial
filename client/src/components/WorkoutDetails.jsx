@@ -4,19 +4,21 @@ import { FaEdit, FaTrash } from 'react-icons/fa'
 import UpdateWorkoutModal from './UpdateWorkoutModal'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import useWorkoutContex from '../hooks/useWorkoutContex';
 
-const WorkoutDetails = ({workout, onDelete, setWorkouts, onUpdate }) => {
+const WorkoutDetails = ({workout}) => {
     const [ isModalVisible, setIsModalVisible ] = useState(false)
     const showModal = () => setIsModalVisible(true)
     const handleOk = () => setIsModalVisible(false)
     const handleCancel = () => setIsModalVisible(false)
+    const {dispatch} = useWorkoutContex()
     const handleDelete = async () => {
         try {
           const response = await axios.delete(`http://localhost:4000/api/workouts/${workout._id}`);
           console.log('Delete successful:', response.data);
-          onDelete(workout._id);
+          dispatch({type: "DELETE_WORKOUT", payload: response.data})
         } catch (error) {
-          console.error('Error deleting the workout:', error);
+          console.error('Error deleting the workout:', error);x
         }
       }
       
@@ -51,7 +53,6 @@ const WorkoutDetails = ({workout, onDelete, setWorkouts, onUpdate }) => {
         workout={workout}
         showErrorNotification={toast.error}
         showUpdateNotification={toast.success}
-        onUpdate={onUpdate}
         />
         <ToastContainer />
         </div>
