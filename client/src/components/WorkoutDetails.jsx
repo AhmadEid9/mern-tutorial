@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from 'axios'
 import React, { useState } from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 import UpdateWorkoutModal from './UpdateWorkoutModal'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import useWorkoutContex from '../hooks/useWorkoutContex';
-
+import useWorkoutContex from '../hooks/useWorkoutContex'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 const WorkoutDetails = ({workout}) => {
     const [ isModalVisible, setIsModalVisible ] = useState(false)
     const showModal = () => setIsModalVisible(true)
@@ -14,11 +14,11 @@ const WorkoutDetails = ({workout}) => {
     const {dispatch} = useWorkoutContex()
     const handleDelete = async () => {
         try {
-          const response = await axios.delete(`http://localhost:4000/api/workouts/${workout._id}`);
-          console.log('Delete successful:', response.data);
+          const response = await axios.delete(`http://localhost:4000/api/workouts/${workout._id}`)
+          console.log('Delete successful:', response.data)
           dispatch({type: 'DELETE_WORKOUT', payload: workout})
         } catch (error) {
-          console.error('Error deleting the workout:', error);
+          console.error('Error deleting the workout:', error)
         }
       }
       
@@ -35,7 +35,7 @@ const WorkoutDetails = ({workout}) => {
             <strong>Load (kgs):</strong> {workout.load}
         </p>
         <p>
-            {workout.createdAt}
+            {formatDistanceToNow(new Date(workout.createdAt), { addsuffixe : true})}
         </p>
         <br />
         </div>
