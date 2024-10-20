@@ -23,7 +23,7 @@ const UpdateWorkoutModal = ({ isVisible, handleOk, handleCancel, workout, showEr
     const res = await axios.patch(`http://127.0.0.1:4000/api/workouts/${workout._id}`, workoutData)
     console.log("ServerResponse", res.data)
     dispatch({type: "UPDATE_WORKOUT", payload: res.data})
-    showUpdateNotification("Workout Successfully Updated!!")
+    // showUpdateNotification("Workout Successfully Updated!!")
     handleOk()
     } catch (error) {
       console.error(error)

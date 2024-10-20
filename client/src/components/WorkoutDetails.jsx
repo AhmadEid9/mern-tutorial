@@ -16,9 +16,9 @@ const WorkoutDetails = ({workout}) => {
         try {
           const response = await axios.delete(`http://localhost:4000/api/workouts/${workout._id}`);
           console.log('Delete successful:', response.data);
-          dispatch({type: "DELETE_WORKOUT", payload: response.data})
+          dispatch({type: 'DELETE_WORKOUT', payload: workout})
         } catch (error) {
-          console.error('Error deleting the workout:', error);x
+          console.error('Error deleting the workout:', error);
         }
       }
       
